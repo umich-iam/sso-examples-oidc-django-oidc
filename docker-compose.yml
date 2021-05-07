@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  starter-django-oidc:
+    build:
+      context: .
+    ports:
+        - 8000:8000
+    volumes:
+      - .:/app
+    container_name: starter-django-oidc
