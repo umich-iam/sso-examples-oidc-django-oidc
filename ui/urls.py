@@ -1,6 +1,6 @@
 from django.urls import path
-from ui.views import AuthenticatedView
+from ui.views import AuthenticatedHomeView
 
 urlpatterns = [
-    path('authenticated', AuthenticatedView.as_view(), name='authenticated'),
+    path('', AuthenticatedHomeView.as_view(), name='authenticated'),
 ]
