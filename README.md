@@ -55,3 +55,8 @@ docker run --name starter-django-oidc-cont -p 8000:8000 starter-django-oidc
 
 To stop the container, you can use `^C` in the terminal window,
 or `docker stop starter-django-oidc-cont`.
+
+### Resources
+- [mozilla-django-oidc](https://mozilla-django-oidc.readthedocs.io/en/stable/installation.html) - Link to documentation for the Python library providing the necessary OIDC tooling for Django
+- [UM ITS Shibboleth Resources](https://documentation.its.umich.edu/node/287) - Link to information and resources about using ITS-provided Shibboleth
+- [UM Shibboleth Well Known](https://shibboleth.umich.edu/.well-known/openid-configuration) - Link to the Shibboleth OIDC metadata for the University of Michigan
