@@ -2,3 +2,10 @@ venv
 __pycache__
 **/db.sqlite3
 .DS_Store
+
+# Config Files #
+################
+.env
+certs/
+.coverage
+.idea

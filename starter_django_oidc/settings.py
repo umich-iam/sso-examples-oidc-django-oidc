@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,10 +36,12 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'mozilla_django_oidc',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ui'
 ]
 
 LOGGING = {
@@ -66,6 +69,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'starter_django_oidc.oidc_ab.MyOIDCAB'
 ]
 
 ROOT_URLCONF = 'starter_django_oidc.urls'
@@ -137,3 +144,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# mozilla-django-oidc
+# https://mozilla-django-oidc.readthedocs.io/en/stable/installation.html
+
+IDP_ROOT_URL = config('IDP_ROOT_URL', default='shib.url')
+OIDC_RP_CLIENT_ID = config('OIDC_RP_CLIENT_ID', default='fake_id')
+OIDC_RP_CLIENT_SECRET = config('OIDC_RP_CLIENT_SECRET', default='fake_secret')
+OIDC_RP_SIGN_ALGO = 'RS256'
+OIDC_OP_AUTHORIZATION_ENDPOINT = IDP_ROOT_URL + '/idp/profile/oidc/authorize'
+OIDC_OP_TOKEN_ENDPOINT = IDP_ROOT_URL + '/idp/profile/oidc/token'
+OIDC_OP_USER_ENDPOINT = IDP_ROOT_URL + '/idp/profile/oidc/userinfo'
+OIDC_OP_JWKS_ENDPOINT = IDP_ROOT_URL + '/oidc/keyset.jwk'
+OIDC_RP_SCOPES = 'openid email profile'
+
+LOGIN_URL = '/oidc/authenticate/'

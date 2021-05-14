@@ -2,6 +2,21 @@
 
 ### Set up instructions
 
+#### Configuration
+
+1. Copy the .env.sample file.  
+   ```
+   cp .env.sample .env
+   ```
+
+2. Fill in the empty values.  
+    `IDP_ROOT_URL` will be https://shibboleth.umich.edu unless you are using the staging environment 
+    in which case it will be https://shib-idp-staging.dsc.umich.edu  
+    
+   `OIDC_RP_CLIENT_ID` and `OIDC_RP_CLIENT_SECRET` will be shared with you after you submit a 
+   [Shibboleth Configuration Request](https://its.umich.edu/accounts-access/shibboleth/configuration-request-form)
+
+
 #### Using `docker-compose.yml`
 
 1. Build the image.
