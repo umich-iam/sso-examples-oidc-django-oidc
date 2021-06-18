@@ -5,7 +5,7 @@
     <title>django-starter-app</title>
 </head>
 <body>
-    <h1>You are able to see this page because you are authenticated.</h1>
+    <h1>You are able to see this page because you are an employee.</h1>
     <table>
         <tr>
             <th>Username</th>
@@ -21,7 +21,6 @@
         </tr>
     </table>
     <br/>
-    <a href="{% url 'student' %}">Student Page</a>
-    <a href="{% url 'employee' %}">Employee Page</a>
+    <a href="{% url 'authenticated' %}">Home Page</a>
 </body>
 </html>

@@ -149,6 +149,8 @@ STATIC_URL = '/static/'
 # mozilla-django-oidc
 # https://mozilla-django-oidc.readthedocs.io/en/stable/installation.html
 
+AUTH_USER_MODEL = 'ui.User'
+
 IDP_ROOT_URL = config('IDP_ROOT_URL', default='shib.url')
 OIDC_RP_CLIENT_ID = config('OIDC_RP_CLIENT_ID', default='fake_id')
 OIDC_RP_CLIENT_SECRET = config('OIDC_RP_CLIENT_SECRET', default='fake_secret')
@@ -157,6 +159,6 @@ OIDC_OP_AUTHORIZATION_ENDPOINT = IDP_ROOT_URL + '/idp/profile/oidc/authorize'
 OIDC_OP_TOKEN_ENDPOINT = IDP_ROOT_URL + '/idp/profile/oidc/token'
 OIDC_OP_USER_ENDPOINT = IDP_ROOT_URL + '/idp/profile/oidc/userinfo'
 OIDC_OP_JWKS_ENDPOINT = IDP_ROOT_URL + '/oidc/keyset.jwk'
-OIDC_RP_SCOPES = 'openid email profile'
+OIDC_RP_SCOPES = 'openid email profile eduperson_affiliation'
 
 LOGIN_URL = '/oidc/authenticate/'
